@@ -1,0 +1,65 @@
+\documentclass[landscape,12pt,dvipsnames]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{schedule}
+
+\makeatletter
+\def\@M@week{{Lunes} {Martes} {Miércoles} {Jueves} {Viernes} {Saturday} {Sunday}}
+\makeatother
+
+\usepackage{geometry}
+\usepackage{fontawesome}     % icon font
+\geometry{
+ letterpaper,
+ left=1mm,
+ right=5mm,
+ top=20mm,
+ bottom=20mm,
+ }
+\CellHeight{1.1cm}
+\CellWidth{5cm}
+\TimeRange{7:00-21:00}
+\SubUnits{30}
+\BeginOn{Monday}
+\TextSize{\small}
+\FiveDay
+
+
+
+
+\NewAppointment{clatec}{blue!20!white}{black}
+\NewAppointment{consul}{brown!20!white}{black}
+\NewAppointment{adm}{cyan!20!white}{black}
+\NewAppointment{inv}{green!20!white}{black}
+\NewAppointment{free}{dark}{black}
+\NewAppointment{lunch}{teal!20!white}{black}
+
+%white, black, red, green, blue, cyan, magenta, yellow.
+\begin{document}
+\thispagestyle{empty}
+\begin{schedule}[Segundo semestre, 2025]%
+    \adm{Comisión para creación\\ de Electromecánica}{}{M}{7:30-11:30}
+    \adm{Comisión para creación\\ de Electromecánica}{}{M}{16:30-18:30}
+    
+    \adm{Consejo de Escuela}{}{M}{12:30-16:30}
+    \clatec{Instrumentación I\\ IF-3502 \\ G3 \\ C1-02}{}{W}{13:00-15:00}
+    \clatec{Instrumentación I\\ IF-3502 \\ G1 \\ C1-02}{}{T}{9:30-11:30}
+    \clatec{Instrumentación I\\ IF-3502\\ G2 \\ C1-02}{}{T}{13:00-15:00}
+    \inv{VIE: ASADAS-IoT: Desarrollo y transferencia de una plataforma tecnológica escalable, modular y abierta de para la ASADA
+    de Paso Ancho, Oreamuno, Cartago}{}{T}{15:00-18:30}
+    \adm{Unidad Posgrado y Comité Técnico de Investigación}{}{Th}{7:30-11:30}
+    \consul{Consulta}{Oficina \#31}{Th}{12:30-16:30}
+    \consul{CAmbiar}{Oficina \#31}{Th}{16:30-18:30}
+    \adm{Coordinación Delta}{}{F}{12:30-16:30}
+    %\adm{Cordinación del DELTA}{}{T}{12:30-16:30}
+    \inv{VIE: Desarrollo de un sistema de monitoreo y alerta para la prevención de la exposición al calor en labores agrícolas: Aplicación en la zafra de la caña de azúcar}{DeltaLab}{W}{7:30-11:30}
+    \inv{VIE: Desarrollo de un sistema de monitoreo y alerta para la prevención de la exposición al calor en labores agrícolas: Aplicación en la zafra de la caña de azúcar}{DeltaLab}{W}{15:00-18:30}
+    \inv{VIE: mant. pred. desarrollo de sist. de diagnóstico y pronóstico}{DeltaLab}{F}{07:30-09:30}
+    % \inv{VIE: mant. pred. desarrollo de sist. de diagnóstico y pronóstico}{DeltaLab}{F}{07:30-11:30}
+    \lunch{Almuerzo}{}{M,T,W,Th,F}{11:30-12:30}
+    \clatec{Lab. Control Eléctrico\ MI-4210\\ G3\\ D10-11}{}{F}{09:30-11:30}
+\end{schedule}%
+\par
+\centering
+\emph{Dr.-Ing. Juan J. Rojas}\,\, \faPhone\,\, 8858-1419 \faEnvelope \,\, juan.rojas@itcr.ac.cr \,\,
+\faFacebook\,\faInstagram\,\faYoutube\,\faSkype\,\faTwitter\,\faGithub\,\, @juanjorojash
+\end{document}
