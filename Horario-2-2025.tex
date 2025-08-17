@@ -1,0 +1,33 @@
+\documentclass[landscape,12pt,dvipsnames]{article}%
+\usepackage{geometry}%
+\geometry{left=1mm,right=5mm,top=20mm,bottom=20mm}%
+\usepackage{schedule}%
+\usepackage{fontawesome}%
+%
+
+\makeatletter
+\def\@M@week{{Lunes} {Martes} {Miércoles} {Jueves} {Viernes} {Saturday} {Sunday}}
+\makeatother
+%
+\CellHeight{1.1cm}%
+\CellWidth{5cm}%
+\TimeRange{7:00-21:00}%
+\SubUnits{30}%
+\BeginOn{Monday}%
+\TextSize{\small}%
+\FiveDay%
+\NewAppointment{curso}{blue!20!white}{black}%
+\NewAppointment{consu}{brown!20!white}{black}%
+\NewAppointment{admin}{cyan!20!white}{black}%
+\NewAppointment{inves}{green!20!white}{black}%
+\NewAppointment{libre}{dark}{black}%
+\NewAppointment{desca}{teal!20!white}{black}%
+%
+\begin{document}%
+\pagestyle{empty}%
+\normalsize%
+\thispagestyle{empty}%
+\begin{schedule}[2\textsuperscript{do} semestre, 2025]%
+\admin{Comisión para creación\\\\ de Electromecánica}{}{M}{7:30-11:30}%
+\end{schedule}%
+\end{document}
