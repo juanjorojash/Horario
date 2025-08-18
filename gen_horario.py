@@ -1,20 +1,15 @@
 import subprocess
 import pandas as pd
 from pylatex import Document, Package, Command, PageStyle, Head, Foot, NewPage, NewLine,\
-    TextColor, MiniPage, StandAloneGraphic, simple_page_number,\
-    TikZ, TikZNode, TikZOptions, TikZCoordinate,\
-    VerticalSpace, HorizontalSpace,\
-    LongTabularx, Tabularx,\
+    TextColor,HorizontalSpace, VerticalSpace, \
     config
 from pylatex.base_classes import Arguments, Environment
 from pylatex.utils import NoEscape, bold, italic
 import funciones as fun
 
-activ = pd.read_csv("actividades.csv")
-datos = pd.read_csv("datos.csv")
-
-print(datos)
-print(activ)
+activ = pd.read_csv("datos/actividades.csv")
+horar = pd.read_csv("datos/horarios.csv")
+usuar = pd.read_csv("datos/usuario.csv")
 
 class Schedule(Environment):
     """Custom LaTeX environment for the schedule package."""
@@ -22,15 +17,15 @@ class Schedule(Environment):
     packages = [Package('schedule')]
 
 
-def generar_horario(datos,actividades):
+def generar_horario(usuario,actividades,horarios):
     #Config
     config.active = config.Version1(row_heigth=1.5)
     #Geometry
     geometry_options = {
-        "left": "1mm",
-        "right": "5mm",
-        "top": "20mm",
-        "bottom": "20mm",
+        "left": "2mm",
+        "right": "2mm",
+        "top": "5mm",
+        "bottom": "5mm",
     }
     #Document options
     doc = Document(documentclass="article", \
@@ -53,7 +48,7 @@ def generar_horario(datos,actividades):
 """))
     doc.preamble.append(Command("CellHeight", "1.1cm"))
     doc.preamble.append(Command("CellWidth", "5cm"))
-    doc.preamble.append(Command("TimeRange", NoEscape(r"7:00-21:00")))
+    doc.preamble.append(Command("TimeRange", NoEscape(r"7:00-19:00")))
     doc.preamble.append(Command("SubUnits", "30"))
     doc.preamble.append(Command("BeginOn", "Monday"))
     doc.preamble.append(Command("TextSize", NoEscape(r"\small")))
@@ -66,29 +61,68 @@ def generar_horario(datos,actividades):
     doc.preamble.append(Command("NewAppointment", ["libre", "dark", "black"]))
     doc.preamble.append(Command("NewAppointment", ["desca", "teal!20!white", "black"]))
     #Read data
-    sem = str(datos['semestre'].item())
-    año = datos['año'].item()
-
+    sem = str(usuario['semestre'].item())
+    año = usuario['año'].item()
     doc.change_page_style("empty")
-
-    with doc.create(Schedule(options=NoEscape(f'''{fun.number_to_ordinals(sem)} semestre, {año}'''))) as sched:
-
-        # \adm{Comisión para creación\\ de Electromecánica}{}{M}{7:30-11:30}
-        sched.append(Command("admin", [
-            NoEscape(r"Comisión para creación\\\\ de Electromecánica"), r"", r"M", NoEscape(r"7:30-11:30")]))
+    titulo = usuario['titulo'].item()
+    nombre = usuario['nombre'].item() 
+    mail = usuario['mail'].item()
+    doc.append(Command("centering"))
+    doc.append(NoEscape(f'''\\large Horario del {fun.number_to_ordinals(sem)} semestre, {año}'''))
+    doc.append(Command("par"))
+    doc.append(Command("small"))
+    doc.append(VerticalSpace("0.5cm"))
+    doc.append(italic(NoEscape(f"{titulo} {nombre}")))
+    #phone
+    doc.append(HorizontalSpace("0.4cm"))
+    doc.append(Command("faPhone"))
+    doc.append(HorizontalSpace("0.2cm"))
+    doc.append(NoEscape("8858-1419"))
+    #mail
+    doc.append(HorizontalSpace("0.4cm"))
+    doc.append(Command("faEnvelope"))
+    doc.append(HorizontalSpace("0.2cm"))
+    doc.append(mail)
     
-    # doc.append(NewLine())
-    # doc.append(Command("centering"))
-    # doc.append(italic("Dr.-Ing. Juan J. Rojas"))
-    # doc.append(NoEscape(r"\,\, "))
-    # #phone
-    # doc.append(Command("faPhone"))
-    # doc.append(NoEscape(r"\,\, 8858-1419 \,\, "))
-    # #mail
-    # doc.append(Command("faEnvelope"))
-    # doc.append(" juan.rojas@itcr.ac.cr ")
-    # doc.append(NoEscape(r"\,\, "))
-    # doc.append(HorizontalSpace("0.333em"))
+    with doc.create(Schedule()) as sched:
+
+        # Iterate through horarios
+        for __, row in horarios.iterrows():
+            codigo = row['codigo']
+            tipo = actividades[actividades['codigo'] == codigo]['tipo'].item()
+            nombre = actividades[actividades['codigo'] == codigo]['nombre'].item()
+            instancia = row['instancia']
+            dia = row['día']
+            inicio = row['inicio']
+            horas = row['horas']
+            ubicacion = row['ubicación']
+            if pd.isna(ubicacion):
+                ubicacion = ""
+            tiempo = f"{inicio}-{(pd.to_datetime(inicio) + pd.Timedelta(hours=int(horas))).strftime('%H:%M')}"
+
+            # Add appointment to the schedule
+            match tipo:
+                case "curso":
+                    sched.append(Command(tipo, [NoEscape(nombre + r"\\" + codigo + r"\\ G" + str(instancia)),NoEscape(ubicacion),NoEscape(dia),NoEscape(tiempo)]))
+                case "consu" | "admin":
+                    sched.append(Command(tipo, [NoEscape(nombre),NoEscape(ubicacion),NoEscape(dia),NoEscape(tiempo)]))
+                case "inves":
+                    sched.append(Command(tipo, [NoEscape(f"Proyecto VIE.\\\ Codigo: {codigo}"),NoEscape(ubicacion),NoEscape(dia),NoEscape(tiempo)]))
+                case "desca":
+                    sched.append(Command(tipo, [NoEscape(nombre),NoEscape(ubicacion),NoEscape(dia),NoEscape(tiempo)]))
+    doc.append(Command("par"))
+    doc.append(Command("raggedright"))
+    doc.append(Command("footnotesize"))
+    for __, row in actividades.iterrows():
+        if row['tipo'] == "inves":
+            codigo = row['codigo']
+            nombre = row['nombre']
+            doc.append(bold(NoEscape(f"Proyecto VIE. Codigo: ")))
+            doc.append(NoEscape(codigo))
+            doc.append(bold(NoEscape(f". Nombre: ")))
+            doc.append(nombre)
+            doc.append(VerticalSpace("0.2cm"))
+            doc.append(NewLine())
     doc.generate_pdf(f"Horario-{sem}-{año}", clean=False, clean_tex=False, compiler='lualatex')
 
-generar_horario(datos,activ)
+generar_horario(usuar,activ,horar)

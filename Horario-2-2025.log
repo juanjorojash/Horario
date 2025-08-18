@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.21.0 (MiKTeX 25.2) (format=lualatex 2025.3.5)  16 AUG 2025 22:23
+This is LuaHBTeX, Version 1.21.0 (MiKTeX 25.2) (format=lualatex 2025.3.5)  17 AUG 2025 19:25
  restricted system commands enabled.
 **C:/repositories/Horario/Horario-2-2025.tex
 (C:/repositories/Horario/Horario-2-2025.tex
@@ -293,15 +293,15 @@ LaTeX Font Info:    ... okay on input line 26.
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: landscape 
-* h-part:(L,W,R)=(2.84526pt, 777.89836pt, 14.22636pt)
-* v-part:(T,H,B)=(56.9055pt, 500.484pt, 56.9055pt)
+* h-part:(L,W,R)=(5.69054pt, 783.58891pt, 5.69054pt)
+* v-part:(T,H,B)=(14.22636pt, 585.84227pt, 14.22636pt)
 * \paperwidth=794.96999pt
 * \paperheight=614.295pt
-* \textwidth=777.89836pt
-* \textheight=500.484pt
-* \oddsidemargin=-69.42473pt
-* \evensidemargin=-69.42473pt
-* \topmargin=-52.36449pt
+* \textwidth=783.58891pt
+* \textheight=585.84227pt
+* \oddsidemargin=-66.57945pt
+* \evensidemargin=-66.57945pt
+* \topmargin=-95.04362pt
 * \headheight=12.0pt
 * \headsep=25.0pt
 * \topskip=12.0pt
@@ -394,18 +394,9 @@ LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 26.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <14.4> on input line 30.
+(Font)              <14.4> on input line 31.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 30.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <17.28> on input line 30.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 30.
-
-Underfull \hbox (badness 10000) in paragraph at lines 31--31
-
- []
-
+(Font)              <7> on input line 31.
 
 
 [1
@@ -419,23 +410,25 @@ L3 programming layer <2025-01-18>
 )
 
 Here is how much of LuaTeX's memory you used:
- 6424 strings out of 475506
+ 6438 strings out of 475506
  100000,662416 words of node,token memory allocated
- 451 words of node memory still in use:
-   3 hlist, 1 vlist, 1 rule, 2 glue, 3 kern, 1 glyph, 4 attribute, 57 glue_spec,
+ 471 words of node memory still in use:
+   3 hlist, 1 vlist, 1 rule, 2 glue, 3 kern, 1 glyph, 4 attribute, 61 glue_spec,
  4 attribute_list, 1 write nodes
-   avail lists: 2:464,3:146,4:30,5:270,6:6,7:1072,8:2,9:496,10:2,11:4
- 29400 multiletter control sequences out of 65536+600000
- 41 fonts using 2960399 bytes
- 94i,9n,104p,240b,269s stack positions out of 10000i,1000n,20000p,200000b,200000s
+   avail lists: 2:1564,3:584,4:430,5:630,6:90,7:4736,8:2,9:1236,10:31,11:216
+ 29414 multiletter control sequences out of 65536+600000
+ 37 fonts using 2824575 bytes
+ 94i,7n,104p,240b,271s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/users/juanj/appdata/local/programs/miktex/fonts/opentype/public/lm/lmroman10
--regular.otf><c:/users/juanj/appdata/local/programs/miktex/fonts/opentype/public
-/lm/lmroman6-regular.otf><c:/users/juanj/appdata/local/programs/miktex/fonts/ope
-ntype/public/lm/lmroman17-regular.otf><c:/users/juanj/appdata/local/programs/mik
-tex/fonts/opentype/public/lm/lmroman12-regular.otf>
-Output written on Horario-2-2025.pdf (1 page, 17197 bytes).
+-bold.otf><c:/users/juanj/appdata/local/programs/miktex/fonts/opentype/public/lm
+/lmroman6-regular.otf><C:/Users/juanj/AppData/Local/Programs/MiKTeX/fonts/openty
+pe/public/fontawesome/fontawesome.otf><c:/users/juanj/appdata/local/programs/mik
+tex/fonts/opentype/public/lm/lmroman10-italic.otf><c:/users/juanj/appdata/local/
+programs/miktex/fonts/opentype/public/lm/lmroman10-regular.otf><c:/users/juanj/a
+ppdata/local/programs/miktex/fonts/opentype/public/lm/lmroman12-regular.otf>
+Output written on Horario-2-2025.pdf (1 page, 29697 bytes).
 
-PDF statistics: 34 PDF objects out of 1000 (max. 8388607)
+PDF statistics: 48 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 131072)
  1 words of extra memory for PDF output out of 10000 (max. 100000000)
 

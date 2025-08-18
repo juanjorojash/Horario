@@ -1,0 +1,13 @@
+tipo,codigo,nombre,horas,instancias
+admin,CLIE,Comisión para creación de Electromecánica,6,
+admin,CTIE,Comité Técnico de Investigación y Extensión,4,
+admin,ADMI,Labores administrativas,4,
+admin,DELTA,Coordinación Delta,4,
+curso,IF-3502,Instrumentación I,2,3
+curso,MI-4210,Lab. Control Eléctrico,2,1
+inves,1341030,"ASADAS-IoT: Desarrollo y transferencia de una plataforma tecnológica escalable, modular y abierta de para la ASADA de Paso Ancho, Oreamuno, Cartago",4,
+inves,1341029,"Desarrollo de un sistema de monitoreo y alerta para la prevención de la exposición al calor en labores agrícolas: Aplicación en la zafra de la caña de azúcar",6,
+inves,1341025,"Mantenimiento  predictivo: desarrollo de sistemas de diagnóstico y pronóstico",2,
+inves,13410XX,"Desarrollo de una plataforma tecnológica escalable y modular para el registro de variables físicas y químicas asociadas a la calidad y abundancia del agua potable.",5,
+consu,CONS,Consulta,2,
+desca,ALMS,Almuerzo,1,5
