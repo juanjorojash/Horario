@@ -11,6 +11,8 @@ activ = pd.read_csv("datos/actividades.csv")
 horar = pd.read_csv("datos/horarios.csv")
 usuar = pd.read_csv("datos/usuario.csv")
 
+fun.analizar_horario(activ, horar)
+
 class Schedule(Environment):
     """Custom LaTeX environment for the schedule package."""
     _latex_name = 'schedule'
@@ -48,7 +50,7 @@ def generar_horario(usuario,actividades,horarios):
 """))
     doc.preamble.append(Command("CellHeight", "1.1cm"))
     doc.preamble.append(Command("CellWidth", "5cm"))
-    doc.preamble.append(Command("TimeRange", NoEscape(r"7:00-19:00")))
+    doc.preamble.append(Command("TimeRange", NoEscape(r"7:30-19:00")))
     doc.preamble.append(Command("SubUnits", "30"))
     doc.preamble.append(Command("BeginOn", "Monday"))
     doc.preamble.append(Command("TextSize", NoEscape(r"\small")))
@@ -107,7 +109,7 @@ def generar_horario(usuario,actividades,horarios):
                 case "consu" | "admin":
                     sched.append(Command(tipo, [NoEscape(nombre),NoEscape(ubicacion),NoEscape(dia),NoEscape(tiempo)]))
                 case "inves":
-                    sched.append(Command(tipo, [NoEscape(f"Proyecto VIE.\\\ Codigo: {codigo}"),NoEscape(ubicacion),NoEscape(dia),NoEscape(tiempo)]))
+                    sched.append(Command(tipo, [NoEscape(r"Proyecto VIE.\\ Codigo:" + f"{codigo}"),NoEscape(ubicacion),NoEscape(dia),NoEscape(tiempo)]))
                 case "desca":
                     sched.append(Command(tipo, [NoEscape(nombre),NoEscape(ubicacion),NoEscape(dia),NoEscape(tiempo)]))
     doc.append(Command("par"))
@@ -123,6 +125,6 @@ def generar_horario(usuario,actividades,horarios):
             doc.append(nombre)
             doc.append(VerticalSpace("0.2cm"))
             doc.append(NewLine())
-    doc.generate_pdf(f"Horario-{sem}-{año}", clean=False, clean_tex=False, compiler='lualatex')
+    doc.generate_pdf(f"Horario-{sem}-{año}", clean=True, clean_tex=False, compiler='lualatex')
 
 generar_horario(usuar,activ,horar)
