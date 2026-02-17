@@ -91,6 +91,7 @@ def generar_horario(usuario,actividades,horarios):
         # Iterate through horarios
         for __, row in horarios.iterrows():
             codigo = row['codigo']
+            print(codigo)
             tipo = actividades[actividades['codigo'] == codigo]['tipo'].item()
             nombre = actividades[actividades['codigo'] == codigo]['nombre'].item()
             instancia = row['instancia']
